@@ -38,7 +38,7 @@ function Feedback({ params }) {
             let validQuestionsCount = 0;
 
             result.forEach((item) => {
-                // 🔥 FIX 1: Regex use karke text se sirf pehla digit nikalenge (e.g. "7/10" ban jayega 7)
+   
                 const parsedRating = item.rating ? parseInt(item.rating.toString().match(/\d+/)?.[0]) : NaN;
                 
                 if (!isNaN(parsedRating)) {
@@ -47,10 +47,10 @@ function Feedback({ params }) {
                 }
             });
 
-            // 🔥 FIX 2: Agar valid count hai toh divide karo, warna default safe handle lagao
+
             const avgRating = validQuestionsCount > 0 
                 ? (totalRating / validQuestionsCount).toFixed(1) 
-                : "7.0"; // Backup clean default value
+                : "7.0";
 
             setOverallRating(avgRating);
         }
@@ -65,7 +65,7 @@ function Feedback({ params }) {
                     <h2 className='text-3xl font-bold text-green-500'>Congratulation!</h2>
                     <h2 className='text-2xl font-bold'> Here is your interview feedback</h2>
                     
-                    {/* 🔥 FIX 3: Render karte waqt bhi ek final verification layer */}
+                 
                     <h2 className='text-primary text-lg my-3'>
                         Your Overall interview rating: <strong> {isNaN(overallRating) ? "7.0" : overallRating}/10</strong>
                     </h2> 
